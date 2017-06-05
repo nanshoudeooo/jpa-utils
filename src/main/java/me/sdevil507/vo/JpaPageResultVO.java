@@ -5,11 +5,12 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 
 /**
- * jpa分页返回实体
- * <p>
- * Created by sdevil507 on 2017/4/10.
+ * jpa分页返回实体VO
+ *
+ * @param <T> PO类型
+ * @param <V> VO类型
  */
-public class JpaPageResultVO {
+public class JpaPageResultVO<T, V> {
     /**
      * 当前页数
      */
@@ -28,7 +29,7 @@ public class JpaPageResultVO {
     /**
      * 记录列表
      */
-    private List rows;
+    private List<V> rows;
 
     /**
      * 分页参数结果集
@@ -36,7 +37,7 @@ public class JpaPageResultVO {
      * @param page  jpa Page对象
      * @param clazz 结果VO类
      */
-    public JpaPageResultVO(Page page, Class<?> clazz) {
+    public JpaPageResultVO(Page<T> page, Class<V> clazz) {
         this.currentPage = page.getNumber() + 1;
         this.totalRecords = page.getNumberOfElements();
         this.totalPageSize = page.getTotalPages();
@@ -67,11 +68,11 @@ public class JpaPageResultVO {
         this.totalPageSize = totalPageSize;
     }
 
-    public List getRows() {
+    public List<V> getRows() {
         return rows;
     }
 
-    public void setRows(List rows) {
+    public void setRows(List<V> rows) {
         this.rows = rows;
     }
 }
