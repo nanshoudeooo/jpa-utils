@@ -1,7 +1,3 @@
-/**
- * @title: JpaUUIDBaseEntity.java
- * @date: 2017年3月7日下午2:18:11
- */
 package me.sdevil507.base;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -36,4 +32,18 @@ public abstract class JpaUUIDBaseEntity implements Serializable {
         this.id = id;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        JpaUUIDBaseEntity that = (JpaUUIDBaseEntity) o;
+
+        return id != null ? id.equals(that.id) : that.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
 }

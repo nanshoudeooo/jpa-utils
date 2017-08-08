@@ -19,7 +19,7 @@ public class JpaSortParamVO implements Serializable {
     @JpaSortArgsValidAnnotation
     private List<JpaSortVO> sortCondition;
 
-    public List<JpaSortVO> getSortCondition() {
+    private List<JpaSortVO> getSortCondition() {
         return sortCondition;
     }
 
